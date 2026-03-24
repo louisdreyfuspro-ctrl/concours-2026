@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cluny — 26-29 Mars 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0e1b35;
+    --navy-light: #162240;
+    --gold: #c9a84c;
+    --white: #ffffff;
+    --gray: #a0aec0;
+    --romain: #3b82f6;
+    --carla: #f97316;
+    --green: #22c55e;
+    --red: #ef4444;
+    --slate: #64748b;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    background: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    color: var(--white);
+    min-height: 100vh;
+  }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 44px 32px 28px;
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content:'';
+    position:absolute; top:-60px; left:50%;
+    transform:translateX(-50%);
+    width:500px; height:250px;
+    background:radial-gradient(ellipse, rgba(201,168,76,0.1) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .eyebrow {
+    font-size:10px; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); font-weight:700; margin-bottom:10px;
+  }
+  .title {
+    font-family:'Playfair Display', serif;
+    font-size: clamp(36px, 8vw, 64px);
+    font-weight:900; line-height:1;
+    color:var(--white);
+  }
+  .title span { color:var(--gold); }
+  .subtitle {
+    margin-top:12px; font-size:12px; letter-spacing:3px;
+    text-transform:uppercase; color:var(--gray); font-weight:500;
+  }
+
+  /* LEGEND */
+  .legend {
+    display:flex; justify-content:center; gap:24px;
+    padding:16px 32px; border-bottom:1px solid rgba(255,255,255,0.06);
+    flex-wrap:wrap;
+  }
+  .leg { display:flex; align-items:center; gap:7px; font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; }
+  .dot { width:9px; height:9px; border-radius:50%; flex-shrink:0; }
+
+  /* GRID */
+  .grid {
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap:1px;
+    background:rgba(255,255,255,0.06);
+  }
+  @media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
+
+  @media print {
+    body { background:#fff; color:#111; }
+    .header { background:#fff; border-bottom:2px solid #c9a84c; }
+    .header::before { display:none; }
+    .eyebrow { color:#c9a84c; }
+    .title { color:#111; }
+    .title span { color:#c9a84c; }
+    .subtitle { color:#555; }
+    .legend { background:#f8f8f8; border-bottom:1px solid #ddd; }
+    .leg { color:#333; }
+    .grid { background:#ddd; }
+    .col { background:#fff; }
+    .col-header { background:#f8f8f8; }
+    .col-name { color:#111; }
+    .col.romain .col-header { border-color:#3b82f6; }
+    .col.carla  .col-header { border-color:#f97316; }
+    .col.romain .col-badge { background:#dbeafe; color:#1d4ed8; }
+    .col.carla  .col-badge { background:#ffedd5; color:#c2410c; }
+    .day-label { color:#555; border-bottom:1px solid #eee; }
+    .ep { border-left-width:3px; }
+    .ep-130 { background:#fff7ed; color:#7c2d12; }
+    .ep-130 .hauteur { color:#ea580c; }
+    .ep-135 { background:#fefce8; color:#713f12; }
+    .ep-135 .hauteur { color:#ca8a04; }
+    .ep-140 { background:#eff6ff; color:#1e3a5f; }
+    .ep-140 .hauteur { color:#2563eb; }
+    .ep-145 { background:#fffbeb; color:#713f12; }
+    .ep-145 .hauteur { color:#d97706; }
+    .ep-gp  { background:#fff1f2; color:#7f1d1d; }
+    .ep-gp  .hauteur { color:#dc2626; }
+    .ep-7ans { background:#f8fafc; color:#334155; }
+    .ep-7ans .hauteur { color:#64748b; }
+    .qualif-badge { background:#fef9c3; color:#854d0e; }
+    .gp-badge     { background:#fee2e2; color:#991b1b; }
+    .sept-badge   { background:#e2e8f0; color:#475569; }
+    .page-footer  { color:#999; border-top:1px solid #ddd; }
+  }
+
+  /* COLUMN */
+  .col {
+    background:var(--navy-light);
+    padding:0;
+  }
+
+  .col-header {
+    padding:18px 24px 14px;
+    border-bottom:3px solid;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .col.romain .col-header { border-color:var(--romain); }
+  .col.carla  .col-header { border-color:var(--carla); }
+
+  .col-name {
+    font-family:'Playfair Display', serif;
+    font-size:22px; font-weight:700;
+  }
+  .col-badge {
+    font-size:10px; font-weight:700; letter-spacing:1px;
+    padding:4px 10px; border-radius:20px; text-transform:uppercase;
+  }
+  .col.romain .col-badge { background:rgba(59,130,246,0.2); color:#93c5fd; }
+  .col.carla  .col-badge { background:rgba(249,115,22,0.2);  color:#fdba74; }
+
+  /* DAYS */
+  .days { padding:16px 20px; display:flex; flex-direction:column; gap:14px; }
+
+  .day {}
+  .day-label {
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:var(--gray); font-weight:700; margin-bottom:7px;
+    padding-bottom:5px;
+    border-bottom:1px solid rgba(255,255,255,0.06);
+  }
+  .epreuves { display:flex; flex-direction:column; gap:5px; }
+
+  .ep {
+    display:flex; align-items:center; gap:8px;
+    padding:6px 10px; border-radius:6px;
+    font-size:12px; font-weight:600;
+    border-left:2px solid transparent;
+  }
+  .ep .hauteur {
+    font-family:'Playfair Display', serif;
+    font-size:14px; font-weight:700;
+    min-width:38px;
+  }
+  .ep .cheval { flex:1; }
+  .ep .type-badge {
+    font-size:9px; letter-spacing:1px; text-transform:uppercase;
+    padding:2px 6px; border-radius:3px; font-weight:700;
+  }
+
+  /* Niveau colors */
+  .ep-130 { background:rgba(249,115,22,0.12); border-color:rgba(249,115,22,0.4); color:#fed7aa; }
+  .ep-130 .hauteur { color:#fb923c; }
+
+  .ep-135 { background:rgba(201,168,76,0.12); border-color:rgba(201,168,76,0.4); color:#fde68a; }
+  .ep-135 .hauteur { color:var(--gold); }
+
+  .ep-140 { background:rgba(59,130,246,0.12); border-color:rgba(59,130,246,0.4); color:#bfdbfe; }
+  .ep-140 .hauteur { color:#60a5fa; }
+
+  .ep-145 { background:rgba(201,168,76,0.18); border-color:rgba(201,168,76,0.6); color:#fef3c7; }
+  .ep-145 .hauteur { color:#fbbf24; }
+
+  .ep-gp { background:rgba(239,68,68,0.15); border-color:rgba(239,68,68,0.5); color:#fecaca; }
+  .ep-gp .hauteur { color:#f87171; }
+
+  .ep-7ans { background:rgba(100,116,139,0.2); border-color:rgba(100,116,139,0.4); color:#cbd5e1; }
+  .ep-7ans .hauteur { color:#94a3b8; font-size:11px; }
+
+  .qualif-badge { background:rgba(201,168,76,0.25); color:#fde68a; }
+  .gp-badge { background:rgba(239,68,68,0.25); color:#fca5a5; }
+  .sept-badge { background:rgba(100,116,139,0.3); color:#94a3b8; }
+
+  /* FOOTER */
+  .page-footer {
+    text-align:center; padding:28px 32px;
+    border-top:1px solid rgba(201,168,76,0.15);
+    font-size:10px; letter-spacing:3px; text-transform:uppercase;
+    color:rgba(160,174,192,0.5);
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="eyebrow">Concours Hippique</div>
+  <div class="title">Cluny <span>2026</span></div>
+  <div class="subtitle">26 – 29 Mars &nbsp;·&nbsp; Jumping</div>
+</div>
+
+<div class="legend">
+  <div class="leg"><div class="dot" style="background:#fb923c"></div>1m30</div>
+  <div class="leg"><div class="dot" style="background:#c9a84c"></div>1m35</div>
+  <div class="leg"><div class="dot" style="background:#60a5fa"></div>1m40</div>
+  <div class="leg"><div class="dot" style="background:#fbbf24"></div>1m45</div>
+  <div class="leg"><div class="dot" style="background:#f87171"></div>GP</div>
+  <div class="leg"><div class="dot" style="background:#94a3b8"></div>7 ans</div>
+</div>
+
+<div class="grid">
+
+  <!-- CARLA -->
+  <div class="col carla">
+    <div class="col-header">
+      <div class="col-name">Carla</div>
+      <div class="col-badge">Carla</div>
+    </div>
+    <div class="days">
+
+      <div class="day">
+        <div class="day-label">Jeudi 26</div>
+        <div class="epreuves">
+          <div class="ep ep-130">
+            <span class="hauteur">1m30</span>
+            <span class="cheval">How Are You</span>
+          </div>
+          <div class="ep ep-130">
+            <span class="hauteur">1m30</span>
+            <span class="cheval">Goldikova</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-label">Vendredi 27</div>
+        <div class="epreuves">
+          <div class="ep ep-135">
+            <span class="hauteur">1m35</span>
+            <span class="cheval">Goldikova</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-label">Samedi 28</div>
+        <div class="epreuves">
+          <div class="ep ep-130">
+            <span class="hauteur">1m30</span>
+            <span class="cheval">How Are You</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ROMAIN -->
+  <div class="col romain">
+    <div class="col-header">
+      <div class="col-name">Romain</div>
+      <div class="col-badge">Romain</div>
+    </div>
+    <div class="days">
+
+      <div class="day">
+        <div class="day-label">Jeudi 26</div>
+        <div class="epreuves">
+          <div class="ep ep-140">
+            <span class="hauteur">1m40</span>
+            <span class="cheval">Diaron's</span>
+            <span class="type-badge qualif-badge">Qualif</span>
+          </div>
+          <div class="ep ep-140">
+            <span class="hauteur">1m40</span>
+            <span class="cheval">Flamme</span>
+            <span class="type-badge qualif-badge">Qualif</span>
+          </div>
+          <div class="ep ep-7ans">
+            <span class="hauteur">7 ans</span>
+            <span class="cheval">Jasmine</span>
+            <span class="type-badge sept-badge">7 ans</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-label">Vendredi 27</div>
+        <div class="epreuves">
+          <div class="ep ep-145">
+            <span class="hauteur">1m45</span>
+            <span class="cheval">Hiva</span>
+          </div>
+          <div class="ep ep-7ans">
+            <span class="hauteur">7 ans</span>
+            <span class="cheval">Jasmine</span>
+            <span class="type-badge sept-badge">7 ans</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-label">Samedi 28</div>
+        <div class="epreuves">
+          <div class="ep ep-145">
+            <span class="hauteur">1m45</span>
+            <span class="cheval">Flamme</span>
+          </div>
+          <div class="ep ep-145">
+            <span class="hauteur">1m45</span>
+            <span class="cheval">Diaron's</span>
+          </div>
+          <div class="ep ep-7ans">
+            <span class="hauteur">7 ans</span>
+            <span class="cheval">Jasmine</span>
+            <span class="type-badge sept-badge">7 ans</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="day">
+        <div class="day-label">Dimanche 29</div>
+        <div class="epreuves">
+          <div class="ep ep-gp">
+            <span class="hauteur">GP</span>
+            <span class="cheval">Diaron's</span>
+            <span class="type-badge gp-badge">Grand Prix</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<div class="page-footer">Cluny · 26–29 Mars 2026</div>
+
+</body>
+</html>
