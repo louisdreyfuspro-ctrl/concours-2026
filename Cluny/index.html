@@ -232,28 +232,7 @@
   <div class="eyebrow">Concours Hippique</div>
 
 <script>
-async function downloadPDF() {
-  const btn = document.querySelector('.dl-wrap');
-  btn.innerHTML = '<button class="dl-btn" disabled>⏳ Génération...</button>';
-
-  const el = document.body;
-  const canvas = await html2canvas(el, {
-    scale: 2,
-    useCORS: true,
-    backgroundColor: '#0e1b35',
-    scrollY: 0,
-    windowWidth: document.body.scrollWidth,
-    windowHeight: document.body.scrollHeight
-  });
-
-  const imgData = canvas.toDataURL('image/jpeg', 1.0);
-  const { jsPDF } = window.jspdf;
-  const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [canvas.width / 2, canvas.height / 2] });
-  pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width / 2, canvas.height / 2);
-  pdf.save('Cluny-2026.pdf');
-
-  btn.innerHTML = '<button class="dl-btn" onclick="downloadPDF()">⬇ Télécharger en PDF</button>';
-}
+function downloadPDF() { window.print(); }
 </script>
   <div class="title">Cluny <span>2026</span></div>
   <div class="subtitle">26 – 29 Mars &nbsp;·&nbsp; Jumping</div>
