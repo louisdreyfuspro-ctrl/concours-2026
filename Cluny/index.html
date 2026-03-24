@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cluny — 26-29 Mars 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
   :root {
     --navy: #0e1b35;
@@ -77,6 +78,11 @@
   @media(max-width:640px){ .grid{ grid-template-columns:1fr; } }
 
   @media print {
+    * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+    body { background: #0e1b35 !important; color: #fff !important; }
+    .header, .col, .grid { background: #0e1b35 !important; }
+    .col { background: #162240 !important; }
+    .dl-wrap { display: none !important; }
     body { background:#fff; color:#111; }
     .header { background:#fff; border-bottom:2px solid #c9a84c; }
     .header::before { display:none; }
@@ -192,6 +198,26 @@
   .sept-badge { background:rgba(100,116,139,0.3); color:#94a3b8; }
 
   /* FOOTER */
+  .dl-btn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 32px;
+    background: var(--gold);
+    color: var(--navy);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .dl-btn:hover { opacity: 0.85; }
+  .dl-wrap { padding: 24px 32px 0; text-align: center; }
+  @media print { .dl-wrap { display: none; } }
+
   .page-footer {
     text-align:center; padding:28px 32px;
     border-top:1px solid rgba(201,168,76,0.15);
@@ -204,6 +230,31 @@
 
 <div class="header">
   <div class="eyebrow">Concours Hippique</div>
+
+<script>
+async function downloadPDF() {
+  const btn = document.querySelector('.dl-wrap');
+  btn.innerHTML = '<button class="dl-btn" disabled>⏳ Génération...</button>';
+
+  const el = document.body;
+  const canvas = await html2canvas(el, {
+    scale: 2,
+    useCORS: true,
+    backgroundColor: '#0e1b35',
+    scrollY: 0,
+    windowWidth: document.body.scrollWidth,
+    windowHeight: document.body.scrollHeight
+  });
+
+  const imgData = canvas.toDataURL('image/jpeg', 1.0);
+  const { jsPDF } = window.jspdf;
+  const pdf = new jsPDF({ orientation: 'landscape', unit: 'px', format: [canvas.width / 2, canvas.height / 2] });
+  pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width / 2, canvas.height / 2);
+  pdf.save('Cluny-2026.pdf');
+
+  btn.innerHTML = '<button class="dl-btn" onclick="downloadPDF()">⬇ Télécharger en PDF</button>';
+}
+</script>
   <div class="title">Cluny <span>2026</span></div>
   <div class="subtitle">26 – 29 Mars &nbsp;·&nbsp; Jumping</div>
 </div>
@@ -341,6 +392,10 @@
     </div>
   </div>
 
+</div>
+
+<div class="dl-wrap">
+  <button class="dl-btn" onclick="downloadPDF()">⬇ Télécharger en PDF</button>
 </div>
 
 <div class="page-footer">Cluny · 26–29 Mars 2026</div>
