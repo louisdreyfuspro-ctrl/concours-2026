@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CSI4 Bourg-en-Bresse - Mai 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--navy:#0e1b35;--navy-light:#162240;--gold:#c9a84c;--white:#ffffff;--gray:#8899aa;--romain:#3b82f6;--carla:#f97316;--tressy:#22c55e}
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{background:var(--navy);font-family:Montserrat,sans-serif;color:var(--white)}
+  .header{text-align:center;padding:44px 40px 28px;background:linear-gradient(180deg,#08111f,var(--navy));border-bottom:1px solid rgba(201,168,76,.3)}
+  .header-sub{font-size:10px;letter-spacing:5px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;font-weight:700}
+  .header-title{font-family:Georgia,serif;font-size:clamp(28px,6vw,54px);font-weight:900;line-height:1.1}
+  .header-title span{color:var(--gold)}
+  .header-dates{font-size:12px;color:var(--gray);letter-spacing:3px;text-transform:uppercase;margin-top:12px}
+  .legend{display:flex;justify-content:center;gap:28px;padding:16px 40px;border-bottom:1px solid rgba(255,255,255,.06);flex-wrap:wrap}
+  .legend-item{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+  .dot{width:10px;height:10px;border-radius:50%}
+  .day-label{padding:13px 28px;font-size:13px;letter-spacing:3px;text-transform:uppercase;font-weight:700;color:var(--gold);background:rgba(201,168,76,.07);border-left:4px solid var(--gold);display:flex;align-items:baseline;gap:14px}
+  .day-date{font-size:10px;color:var(--gray);font-weight:500;letter-spacing:2px}
+  .day-spacer{height:1px;background:rgba(201,168,76,.12)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1px;background:rgba(255,255,255,.05)}
+  .card{background:var(--navy-light);display:flex;flex-direction:column;transition:background .15s}
+  .card:hover{background:#1c2d52}
+  .card-top{padding:10px 16px 8px;display:flex;align-items:center;justify-content:space-between;gap:8px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .epr-num{font-size:10px;font-weight:700;color:var(--gray);letter-spacing:1px}
+  .niveau-badge{font-size:9px;font-weight:700;letter-spacing:1px;padding:3px 9px;border-radius:20px;text-transform:uppercase;white-space:nowrap}
+  .n-2{background:rgba(239,68,68,.2);color:#fca5a5}
+  .n-4{background:rgba(201,168,76,.2);color:var(--gold)}
+  .n-gp{background:rgba(201,168,76,.35);color:#fef08a}
+  .n-rl{background:rgba(168,85,247,.2);color:#d8b4fe}
+  .card-mid{padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)}
+  .hauteur{font-family:Georgia,serif;font-size:26px;font-weight:700;color:var(--white);white-space:nowrap}
+  .meta{display:flex;flex-direction:column;gap:2px}
+  .format{font-size:10px;color:var(--gray);font-weight:500}
+  .dotation{font-size:12px;font-weight:700;color:var(--gold)}
+  .card-body{padding:12px 14px 14px;flex:1;display:flex;flex-direction:column;gap:8px}
+  .rider-block{display:flex;align-items:flex-start;gap:10px;padding:8px 10px;border-radius:7px;border-left:3px solid}
+  .rider-block.romain{background:rgba(59,130,246,.1);border-color:var(--romain)}
+  .rider-block.carla{background:rgba(249,115,22,.1);border-color:var(--carla)}
+  .rider-block.tressy{background:rgba(34,197,94,.1);border-color:var(--tressy)}
+  .rider-name{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;white-space:nowrap;padding-top:1px;min-width:46px}
+  .rider-block.romain .rider-name{color:#93c5fd}
+  .rider-block.carla .rider-name{color:#fdba74}
+  .rider-block.tressy .rider-name{color:#86efac}
+  .horses{display:flex;flex-direction:column;gap:3px}
+  .horse{font-size:11px;color:var(--white);font-weight:500;display:flex;align-items:center;gap:6px}
+  .horse::before{content:"H";font-size:11px}
+  .page-footer{text-align:center;padding:26px 40px;border-top:1px solid rgba(201,168,76,.15);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:rgba(160,174,192,.4)}
+  @media(max-width:600px){.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="header"><div class="header-sub">Programme des partants</div><div class="header-title">CSI4 <span>Bourg-en-Bresse</span></div><div class="header-dates">6 - 10 Mai 2026</div></div>
+<div class="legend"><div class="legend-item"><div class="dot" style="background:var(--romain)"></div>Romain</div><div class="legend-item"><div class="dot" style="background:var(--carla)"></div>Carla</div><div class="legend-item"><div class="dot" style="background:var(--tressy)"></div>Tressy</div></div>
+<div class="day-label">Mercredi <span class="day-date">6 Mai</span></div>
+<div class="grid"><div class="card"><div class="card-top"><span class="epr-num">N1</span><span class="niveau-badge n-2">CSI 2</span></div><div class="card-mid"><div class="hauteur">1m30</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">2.000 E</div></div></div><div class="card-body"><div class="rider-block carla"><div class="rider-name">Carla</div><div class="horses"><div class="horse">How Are You</div><div class="horse">Goldikova</div></div></div><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Iroquois</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N2</span><span class="niveau-badge n-2">CSI 2 Qualif.</span></div><div class="card-mid"><div class="hauteur">1m40</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">5.000 E</div></div></div><div class="card-body"><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Malia</div></div></div><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Flamme</div></div></div></div></div></div>
+<div class="day-spacer"></div>
+<div class="day-label">Jeudi <span class="day-date">7 Mai</span></div>
+<div class="grid"><div class="card"><div class="card-top"><span class="epr-num">N6</span><span class="niveau-badge n-2">CSI 2</span></div><div class="card-mid"><div class="hauteur">1m35</div><div class="meta"><div class="format">Temps differe</div><div class="dotation">2.000 E</div></div></div><div class="card-body"><div class="rider-block carla"><div class="rider-name">Carla</div><div class="horses"><div class="horse">How Are You</div><div class="horse">Goldikova</div></div></div><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Iroquois</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N3</span><span class="niveau-badge n-4">CSI 4</span></div><div class="card-mid"><div class="hauteur">1m40</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">6.000 E</div></div></div><div class="card-body"><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Illinois</div></div></div><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Diarons</div><div class="horse">Channah Z</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N4</span><span class="niveau-badge n-2">CSI 2 Qualif.</span></div><div class="card-mid"><div class="hauteur">1m45</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">8.000 E</div></div></div><div class="card-body"><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Malia</div></div></div><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Flamme</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N5</span><span class="niveau-badge n-rl">CSI 4 Ranking List</span></div><div class="card-mid"><div class="hauteur">1m50</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">28.200 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Hiva</div></div></div></div></div></div>
+<div class="day-spacer"></div>
+<div class="day-label">Vendredi <span class="day-date">8 Mai</span></div>
+<div class="grid"><div class="card"><div class="card-top"><span class="epr-num">N8</span><span class="niveau-badge n-2">CSI 2</span></div><div class="card-mid"><div class="hauteur">1m35</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">3.000 E</div></div></div><div class="card-body"><div class="rider-block carla"><div class="rider-name">Carla</div><div class="horses"><div class="horse">How Are You</div><div class="horse">Goldikova</div></div></div><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Iroquois</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N10</span><span class="niveau-badge n-4">CSI 4</span></div><div class="card-mid"><div class="hauteur">1m40</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">6.000 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Diarons</div></div></div><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Illinois</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N9</span><span class="niveau-badge n-rl">CSI 4 Ranking List</span></div><div class="card-mid"><div class="hauteur">1m50</div><div class="meta"><div class="format">Bareme A + Barrage</div><div class="dotation">56.800 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Channah Z</div></div></div></div></div></div>
+<div class="day-spacer"></div>
+<div class="day-label">Samedi <span class="day-date">9 Mai</span></div>
+<div class="grid"><div class="card"><div class="card-top"><span class="epr-num">N15</span><span class="niveau-badge n-4">CSI 4</span></div><div class="card-mid"><div class="hauteur">1m40</div><div class="meta"><div class="format">Bareme A au chrono</div><div class="dotation">6.000 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Hiva</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N13</span><span class="niveau-badge n-gp">CSI 2 Grand Prix</span></div><div class="card-mid"><div class="hauteur">1m45</div><div class="meta"><div class="format">Bareme A + Barrage 60 partants</div><div class="dotation">28.200 E</div></div></div><div class="card-body"><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Malia</div></div></div><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Flamme</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N14</span><span class="niveau-badge n-rl">CSI 4 Ranking List</span></div><div class="card-mid"><div class="hauteur">1m50</div><div class="meta"><div class="format">Winning round 2 manches</div><div class="dotation">30.000 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Diarons</div></div></div></div></div></div>
+<div class="day-spacer"></div>
+<div class="day-label">Dimanche <span class="day-date">10 Mai</span></div>
+<div class="grid"><div class="card"><div class="card-top"><span class="epr-num">N16</span><span class="niveau-badge n-4">CSI 4</span></div><div class="card-mid"><div class="hauteur">1m45</div><div class="meta"><div class="format">Temps differe</div><div class="dotation">8.000 E</div></div></div><div class="card-body"><div class="rider-block tressy"><div class="rider-name">Tressy</div><div class="horses"><div class="horse">Illinois</div></div></div><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Hiva</div><div class="horse">Diarons</div></div></div></div></div><div class="card"><div class="card-top"><span class="epr-num">N18</span><span class="niveau-badge n-rl">CSI 4 Grand Prix</span></div><div class="card-mid"><div class="hauteur">1m55</div><div class="meta"><div class="format">Bareme A + Barrage 50 partants</div><div class="dotation">110.000 E</div></div></div><div class="card-body"><div class="rider-block romain"><div class="rider-name">Romain</div><div class="horses"><div class="horse">Channah Z</div></div></div></div></div></div>
+<div class="page-footer">CSI4 Bourg-en-Bresse - 6-10 Mai 2026 - Programme des partants<div style="margin-top:8px;font-size:9px;letter-spacing:2px;color:rgba(201,168,76,0.35);">fait par <span style="color:rgba(201,168,76,0.55);font-weight:700;">HORSEVO</span></div></div>
+</body>
+</html>
