@@ -48,9 +48,9 @@
   .horse-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.25); flex-shrink:0; }
   .rider-tag { margin-left:auto; font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:2px 8px; border-radius:10px; white-space:nowrap; }
   .tag-romain { background:var(--romain-bg); color:var(--romain); }
+  .tag-carla { background:var(--carla-bg); color:var(--carla); }
   .option-block { background:rgba(168,85,247,0.06); border:1px solid rgba(168,85,247,0.2); border-radius:12px; padding:14px 18px; margin-top:8px; }
   .option-title { font-size:9px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:#d8b4fe; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
-  .option-title::before { content:'option'; font-size:9px; }
   .option-events { display:flex; flex-direction:column; gap:10px; }
   .option-event { background:var(--navy3); border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); }
   .option-event-header { padding:10px 14px 8px; background:var(--navy2); display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid rgba(255,255,255,0.05); }
@@ -67,30 +67,61 @@
 <body>
 <div class="header"><div class="header-eyebrow">Programme des partants</div><div class="header-title">Concours <span>2026 — Part 2</span></div><div class="header-meta"><div class="header-chip">Mai – Juin 2026</div><div class="header-chip">Lisbonne · Gassin · Deauville</div></div></div>
 <div class="legend"><div class="legend-pill romain"><div class="legend-dot" style="background:var(--romain)"></div>Romain</div><div class="legend-pill carla"><div class="legend-dot" style="background:var(--carla)"></div>Carla</div><div class="legend-pill tressy"><div class="legend-dot" style="background:var(--tressy)"></div>Tressy</div></div>
+
+<!-- LISBON -->
 <div class="event-section">
   <div class="event-header"><div><div class="event-name">Lisbon</div><div class="event-dates">19 – 24 Mai</div></div><div class="event-badge badge-4">CSI</div></div>
-  <div class="horses-block"><div class="horses-label">Chevaux engagés</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div></div>
+  <div class="horses-block"><div class="horses-label">Chevaux engagés</div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div>
+  </div>
 </div>
+
+<!-- GASSIN 3* -->
 <div class="event-section">
   <div class="event-header"><div><div class="event-name">Gassin Saint-Tropez</div><div class="event-dates">27 – 31 Mai</div></div><div class="event-badge badge-3">CSI 3★</div></div>
-  <div class="horses-block"><div class="horses-label">Chevaux engagés</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div></div>
+  <div class="horses-block"><div class="horses-label">Chevaux engagés</div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div>
+    <div class="horse-row carla"><div class="horse-dot"></div><div class="horse-name">Goldikova</div><div class="rider-tag tag-carla">Carla</div></div>
+    <div class="horse-row carla"><div class="horse-dot"></div><div class="horse-name">How Are You</div><div class="rider-tag tag-carla">Carla</div></div>
+    <div class="horse-row carla"><div class="horse-dot"></div><div class="horse-name">Jolie Mouche</div><div class="rider-tag tag-carla">Carla</div></div>
+  </div>
 </div>
+
+<!-- OPTION -->
 <div class="event-section">
   <div class="option-block">
-    <div class="option-title">Option — À confirmer</div>
+    <div class="option-title">⚡ Option — À confirmer</div>
     <div class="option-events">
       <div class="option-event">
         <div class="option-event-header"><div><div class="option-event-name">Gassin Saint-Tropez</div><div class="option-event-dates">03 – 07 Juin · CSI 4★</div></div><div class="event-badge badge-4">CSI 4★</div></div>
-        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Mêmes chevaux + selon dispos :</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Channah Z <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Hiva <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div></div>
+        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Mêmes chevaux + selon dispos :</div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Channah Z <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div>
+          <div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Hiva <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div>
+        </div>
       </div>
       <div style="text-align:center;font-size:11px;font-weight:800;letter-spacing:4px;color:rgba(168,85,247,0.7);text-transform:uppercase;padding:4px 0">— OU —</div>
       <div class="option-event">
         <div class="option-event-header"><div><div class="option-event-name">Deauville</div><div class="option-event-dates">03 – 07 Juin · CSIO</div></div><div class="event-badge badge-csio">CSIO</div></div>
-        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Chevaux pressentis</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name" style="font-size:11px;color:var(--gray)">+ autres selon sélection équipe</div></div></div>
+        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Chevaux pressentis</div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div>
+          <div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name" style="font-size:11px;color:var(--gray)">+ autres selon sélection équipe</div></div>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 <div class="page-footer"><div class="footer-main">Programme Concours 2026 — Part 2 · Mai – Juin 2026</div><div class="footer-horsevo">fait par <span>HORSEVO</span></div></div>
 </body>
 </html>
