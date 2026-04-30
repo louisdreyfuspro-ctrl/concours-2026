@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Programme Concours 2026 — Part 2</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628; --navy2: #111f3a; --navy3: #172444;
+    --gold: #c9a84c; --gold2: #e8c96a; --white: #ffffff; --gray: #7a8fa6;
+    --romain: #4a9eff; --romain-bg: rgba(74,158,255,0.12); --romain-border: rgba(74,158,255,0.5);
+    --carla: #ff8c42; --carla-bg: rgba(255,140,66,0.12); --carla-border: rgba(255,140,66,0.5);
+    --tressy: #3dd68c; --tressy-bg: rgba(61,214,140,0.12); --tressy-border: rgba(61,214,140,0.5);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:var(--navy); font-family:'Montserrat',sans-serif; color:var(--white); -webkit-font-smoothing:antialiased; }
+  .header { position:relative; text-align:center; padding:56px 40px 40px; background:linear-gradient(160deg,#06101f 0%,#0d1e38 60%,#0a1628 100%); border-bottom:1px solid rgba(201,168,76,0.2); overflow:hidden; }
+  .header::before { content:''; position:absolute; top:-100px; left:50%; transform:translateX(-50%); width:700px; height:400px; background:radial-gradient(ellipse,rgba(201,168,76,0.08) 0%,transparent 65%); pointer-events:none; }
+  .header-eyebrow { display:inline-flex; align-items:center; gap:10px; font-size:10px; font-weight:700; letter-spacing:5px; color:var(--gold); text-transform:uppercase; margin-bottom:16px; padding:6px 16px; border:1px solid rgba(201,168,76,0.3); border-radius:20px; }
+  .header-title { font-family:'Playfair Display',serif; font-size:clamp(34px,7vw,64px); font-weight:900; line-height:1.05; letter-spacing:-1px; color:var(--white); }
+  .header-title span { color:var(--gold); }
+  .header-meta { display:flex; align-items:center; justify-content:center; gap:24px; margin-top:20px; flex-wrap:wrap; }
+  .header-chip { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gray); display:flex; align-items:center; gap:6px; }
+  .header-chip::before { content:''; width:4px; height:4px; border-radius:50%; background:var(--gold); }
+  .legend { display:flex; justify-content:center; gap:6px; padding:14px 24px; flex-wrap:wrap; background:var(--navy2); border-bottom:1px solid rgba(255,255,255,0.05); }
+  .legend-pill { display:flex; align-items:center; gap:8px; padding:6px 14px; border-radius:20px; font-size:11px; font-weight:700; letter-spacing:1px; text-transform:uppercase; border:1px solid; }
+  .legend-pill.romain { background:var(--romain-bg); border-color:var(--romain-border); color:var(--romain); }
+  .legend-pill.carla { background:var(--carla-bg); border-color:var(--carla-border); color:var(--carla); }
+  .legend-pill.tressy { background:var(--tressy-bg); border-color:var(--tressy-border); color:var(--tressy); }
+  .legend-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+  .event-section { padding:16px; background:rgba(0,0,0,0.15); }
+  .event-section + .event-section { border-top:8px solid rgba(0,0,0,0.2); }
+  .event-header { padding:20px 20px 16px; background:var(--navy2); border-left:3px solid var(--gold); border-radius:12px 12px 0 0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px; margin-bottom:1px; }
+  .event-name { font-family:'Playfair Display',serif; font-size:24px; font-weight:900; color:var(--white); line-height:1.1; }
+  .event-dates { font-size:11px; font-weight:600; letter-spacing:3px; text-transform:uppercase; color:var(--gold); margin-top:4px; }
+  .event-badge { font-size:10px; font-weight:800; letter-spacing:1.5px; padding:5px 14px; border-radius:20px; text-transform:uppercase; border:1px solid; white-space:nowrap; }
+  .badge-3 { background:rgba(239,68,68,.15); color:#fca5a5; border-color:rgba(239,68,68,.3); }
+  .badge-4 { background:rgba(201,168,76,.15); color:var(--gold); border-color:rgba(201,168,76,.3); }
+  .badge-csio { background:rgba(168,85,247,.15); color:#d8b4fe; border-color:rgba(168,85,247,.3); }
+  .horses-block { background:var(--navy3); border-radius:0 0 12px 12px; padding:14px 20px 18px; display:flex; flex-direction:column; gap:8px; border:1px solid rgba(255,255,255,0.05); border-top:none; margin-bottom:12px; }
+  .horses-label { font-size:9px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--gray); margin-bottom:4px; }
+  .horse-row { display:flex; align-items:center; gap:10px; padding:9px 12px; border-radius:10px; border-left:3px solid; }
+  .horse-row.romain { background:var(--romain-bg); border-color:var(--romain); }
+  .horse-row.carla { background:var(--carla-bg); border-color:var(--carla); }
+  .horse-row.neutral { background:rgba(255,255,255,0.04); border-color:rgba(255,255,255,0.15); }
+  .horse-name { font-size:13px; font-weight:600; color:var(--white); }
+  .horse-dot { width:5px; height:5px; border-radius:50%; background:rgba(255,255,255,0.25); flex-shrink:0; }
+  .rider-tag { margin-left:auto; font-size:9px; font-weight:800; letter-spacing:1.5px; text-transform:uppercase; padding:2px 8px; border-radius:10px; white-space:nowrap; }
+  .tag-romain { background:var(--romain-bg); color:var(--romain); }
+  .option-block { background:rgba(168,85,247,0.06); border:1px solid rgba(168,85,247,0.2); border-radius:12px; padding:14px 18px; margin-top:8px; }
+  .option-title { font-size:9px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:#d8b4fe; margin-bottom:10px; display:flex; align-items:center; gap:8px; }
+  .option-title::before { content:'option'; font-size:9px; }
+  .option-events { display:flex; flex-direction:column; gap:10px; }
+  .option-event { background:var(--navy3); border-radius:10px; overflow:hidden; border:1px solid rgba(255,255,255,0.05); }
+  .option-event-header { padding:10px 14px 8px; background:var(--navy2); display:flex; align-items:center; justify-content:space-between; gap:8px; border-bottom:1px solid rgba(255,255,255,0.05); }
+  .option-event-name { font-size:13px; font-weight:700; color:var(--white); }
+  .option-event-dates { font-size:10px; color:var(--gold); font-weight:600; letter-spacing:2px; }
+  .option-horses { padding:10px 12px 12px; display:flex; flex-direction:column; gap:6px; }
+  .page-footer { text-align:center; padding:32px 40px; border-top:1px solid rgba(201,168,76,0.15); background:var(--navy2); }
+  .footer-main { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:rgba(160,174,192,0.5); }
+  .footer-horsevo { margin-top:10px; font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:rgba(201,168,76,0.4); }
+  .footer-horsevo span { color:rgba(201,168,76,0.65); font-weight:800; }
+  @media(max-width:640px){ .header{padding:36px 20px 28px} .header-title{font-size:30px} .event-header{flex-direction:column;align-items:flex-start} .event-section{padding:10px} }
+</style>
+</head>
+<body>
+<div class="header"><div class="header-eyebrow">Programme des partants</div><div class="header-title">Concours <span>2026 — Part 2</span></div><div class="header-meta"><div class="header-chip">Mai – Juin 2026</div><div class="header-chip">Lisbonne · Gassin · Deauville</div></div></div>
+<div class="legend"><div class="legend-pill romain"><div class="legend-dot" style="background:var(--romain)"></div>Romain</div><div class="legend-pill carla"><div class="legend-dot" style="background:var(--carla)"></div>Carla</div><div class="legend-pill tressy"><div class="legend-dot" style="background:var(--tressy)"></div>Tressy</div></div>
+<div class="event-section">
+  <div class="event-header"><div><div class="event-name">Lisbon</div><div class="event-dates">19 – 24 Mai</div></div><div class="event-badge badge-4">CSI</div></div>
+  <div class="horses-block"><div class="horses-label">Chevaux engagés</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div></div>
+</div>
+<div class="event-section">
+  <div class="event-header"><div><div class="event-name">Gassin Saint-Tropez</div><div class="event-dates">27 – 31 Mai</div></div><div class="event-badge badge-3">CSI 3★</div></div>
+  <div class="horses-block"><div class="horses-label">Chevaux engagés</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div></div>
+</div>
+<div class="event-section">
+  <div class="option-block">
+    <div class="option-title">Option — À confirmer</div>
+    <div class="option-events">
+      <div class="option-event">
+        <div class="option-event-header"><div><div class="option-event-name">Gassin Saint-Tropez</div><div class="option-event-dates">03 – 07 Juin · CSI 4★</div></div><div class="event-badge badge-4">CSI 4★</div></div>
+        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Mêmes chevaux + selon dispos :</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Diaron’s</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Comme Convenu</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Armstrong</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Ithaque</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Flamme</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Channah Z <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name">Hiva <span style="font-size:10px;color:var(--gray)">selon dispos</span></div></div></div>
+      </div>
+      <div style="text-align:center;font-size:11px;font-weight:800;letter-spacing:4px;color:rgba(168,85,247,0.7);text-transform:uppercase;padding:4px 0">— OU —</div>
+      <div class="option-event">
+        <div class="option-event-header"><div><div class="option-event-name">Deauville</div><div class="option-event-dates">03 – 07 Juin · CSIO</div></div><div class="event-badge badge-csio">CSIO</div></div>
+        <div class="option-horses"><div class="horses-label" style="margin-bottom:4px">Chevaux pressentis</div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Channah Z</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row romain"><div class="horse-dot"></div><div class="horse-name">Hiva</div><div class="rider-tag tag-romain">Romain</div></div><div class="horse-row neutral"><div class="horse-dot"></div><div class="horse-name" style="font-size:11px;color:var(--gray)">+ autres selon sélection équipe</div></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="page-footer"><div class="footer-main">Programme Concours 2026 — Part 2 · Mai – Juin 2026</div><div class="footer-horsevo">fait par <span>HORSEVO</span></div></div>
+</body>
+</html>
